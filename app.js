@@ -1,6 +1,6 @@
 console.log("connected")
 
-const messageOne = document.querySelector('#country')
+const messageOne = document.querySelector('.countries-layout')
 
 
 fetch(`https://restcountries.com/v2/all`).then ((response) => {
@@ -10,11 +10,13 @@ fetch(`https://restcountries.com/v2/all`).then ((response) => {
     } else {
       data.forEach((country) => {
         messageOne.insertAdjacentHTML("beforeend",`
-        <h2>${country.name}</h2>
-        <img src="${country.flags.svg}" alt="Weather Icon"></img>
+        <div id="country">
+        <img src="${country.flags.png}" alt="Country flag"></img>
+        <h3>${country.name}</h3>
         <p>population: ${country.population}</p>
         <p>capital: ${country.capital}</p>
-        <p>region: ${country.region}</p>`)
+        <p>region: ${country.region}</p>
+        <div>`)
       });
     }
   })
